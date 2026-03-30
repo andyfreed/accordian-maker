@@ -386,6 +386,25 @@
         <button class="btn btn-primary" onclick="addExtraSection()">+ Add Content Section</button>
     </div>
 
+    <!-- Second Accordion -->
+    <div class="card">
+        <h2>Second Accordion</h2>
+        <p style="font-size:13px; color:#64748b; margin-bottom:14px;">These generate a separate accordion below the first one.</p>
+
+        <div class="form-group" style="margin-bottom:14px;">
+            <label class="field-label">Sponsor ID Numbers</label>
+            <textarea id="tpl-sponsor" placeholder="Paste sponsor ID numbers here..." style="min-height:80px;"></textarea>
+        </div>
+        <div class="form-group" style="margin-bottom:14px;">
+            <label class="field-label">Learning Objectives</label>
+            <textarea id="tpl-objectives" placeholder="Paste learning objectives here..."></textarea>
+        </div>
+        <div class="form-group">
+            <label class="field-label">Disclaimers</label>
+            <textarea id="tpl-disclaimers" placeholder="Paste disclaimers here..."></textarea>
+        </div>
+    </div>
+
     <!-- Generate -->
     <div class="card">
         <div class="btn-row" style="margin-top:0;">
@@ -397,7 +416,7 @@
     <!-- Output -->
     <div id="template-output" style="display:none;">
         <div class="card">
-            <h2>Generated Output</h2>
+            <h2>Accordion 1 — Course Details &amp; Licenses</h2>
             <div class="output-tabs">
                 <div class="output-tab active" onclick="switchOutputTab('tpl', 'preview')">Preview</div>
                 <div class="output-tab" onclick="switchOutputTab('tpl', 'shortcode')">Shortcode</div>
@@ -417,6 +436,30 @@
             <div class="btn-row">
                 <button class="btn btn-success" onclick="copyTemplateOutput('shortcode')">Copy Shortcode</button>
                 <button class="btn btn-success" onclick="copyTemplateOutput('html')">Copy HTML</button>
+            </div>
+        </div>
+
+        <div class="card" id="tpl-acc2-card" style="display:none;">
+            <h2>Accordion 2 — Sponsor IDs, Objectives &amp; Disclaimers</h2>
+            <div class="output-tabs">
+                <div class="output-tab active" onclick="switchOutputTab('tpl2', 'preview')">Preview</div>
+                <div class="output-tab" onclick="switchOutputTab('tpl2', 'shortcode')">Shortcode</div>
+                <div class="output-tab" onclick="switchOutputTab('tpl2', 'html')">HTML</div>
+            </div>
+            <div class="output-wrapper">
+                <div class="output-pane active" id="tpl2-preview">
+                    <div class="preview-box" id="tpl2-preview-box"></div>
+                </div>
+                <div class="output-pane" id="tpl2-shortcode">
+                    <div class="output-box" id="tpl2-shortcode-box"></div>
+                </div>
+                <div class="output-pane" id="tpl2-html">
+                    <div class="output-box" id="tpl2-html-box"></div>
+                </div>
+            </div>
+            <div class="btn-row">
+                <button class="btn btn-success" onclick="copyTemplateOutput('shortcode2')">Copy Shortcode</button>
+                <button class="btn btn-success" onclick="copyTemplateOutput('html2')">Copy HTML</button>
             </div>
         </div>
     </div>
@@ -680,6 +723,8 @@ function renderExtraSections() {
 
 let generatedShortcode = '';
 let generatedHTML = '';
+let generatedShortcode2 = '';
+let generatedHTML2 = '';
 
 function generateTemplate() {
     const author = document.getElementById('tpl-author').value.trim();
@@ -739,6 +784,42 @@ function generateTemplate() {
     sc.push('[/bhfe_accordion]');
     generatedShortcode = sc.join('\n');
 
+    // Build second accordion (Sponsor IDs, Objectives, Disclaimers)
+    const sponsor = document.getElementById('tpl-sponsor').value.trim();
+    const objectives = document.getElementById('tpl-objectives').value.trim();
+    const disclaimers = document.getElementById('tpl-disclaimers').value.trim();
+
+    const sc2 = [];
+    const html2 = [];
+    const acc2Items = [
+        { title: 'Sponsor ID Numbers', content: sponsor },
+        { title: 'Learning Objectives', content: objectives },
+        { title: 'Disclaimers', content: disclaimers }
+    ].filter(item => item.content);
+
+    if (acc2Items.length) {
+        sc2.push('[bhfe_accordion]');
+        sc2.push('');
+        acc2Items.forEach(item => {
+            sc2.push(`[bhfe_accordion_item title="${item.title}"]`);
+            sc2.push('');
+            sc2.push(item.content);
+            sc2.push('');
+            sc2.push('[/bhfe_accordion_item]');
+            sc2.push('');
+        });
+        sc2.push('[/bhfe_accordion]');
+
+        acc2Items.forEach(item => {
+            html2.push(`<strong>${item.title}</strong>`);
+            const lines = item.content.split('\n').filter(l => l.trim()).map(l => escHTML(l));
+            html2.push(`<div style="padding-left:16px;">${lines.join('<br>')}</div>`);
+        });
+    }
+
+    generatedShortcode2 = sc2.join('\n');
+    generatedHTML2 = html2.join('\n');
+
     // Build HTML output
     const html = [];
 
@@ -769,21 +850,32 @@ function generateTemplate() {
 
     generatedHTML = html.join('\n');
 
-    // Render outputs
+    // Render outputs — accordion 1
     document.getElementById('tpl-preview-box').innerHTML = generatedHTML;
     document.getElementById('tpl-shortcode-box').textContent = generatedShortcode;
     document.getElementById('tpl-html-box').textContent = generatedHTML;
+
+    // Render outputs — accordion 2
+    const acc2Card = document.getElementById('tpl-acc2-card');
+    if (generatedShortcode2) {
+        document.getElementById('tpl2-preview-box').innerHTML = generatedHTML2;
+        document.getElementById('tpl2-shortcode-box').textContent = generatedShortcode2;
+        document.getElementById('tpl2-html-box').textContent = generatedHTML2;
+        acc2Card.style.display = 'block';
+    } else {
+        acc2Card.style.display = 'none';
+    }
+
     document.getElementById('template-output').style.display = 'block';
     document.getElementById('template-output').scrollIntoView({ behavior: 'smooth' });
 }
 
 function copyTemplateOutput(type) {
     const btn = event.target;
-    if (type === 'shortcode') {
-        copyText(generatedShortcode, btn);
-    } else {
-        copyText(generatedHTML, btn);
-    }
+    if (type === 'shortcode') copyText(generatedShortcode, btn);
+    else if (type === 'html') copyText(generatedHTML, btn);
+    else if (type === 'shortcode2') copyText(generatedShortcode2, btn);
+    else if (type === 'html2') copyText(generatedHTML2, btn);
 }
 
 function clearTemplate() {
@@ -796,6 +888,9 @@ function clearTemplate() {
     extraSections = [];
     renderLicenses();
     renderExtraSections();
+    document.getElementById('tpl-sponsor').value = '';
+    document.getElementById('tpl-objectives').value = '';
+    document.getElementById('tpl-disclaimers').value = '';
     document.getElementById('template-output').style.display = 'none';
 }
 
