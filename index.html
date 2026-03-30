@@ -140,7 +140,7 @@
             line-height: 1.7;
             font-size: 15px;
         }
-        .preview-box h2 { font-size: 18px; margin: 16px 0 8px; color: #1e293b; border-bottom: 1px solid #e2e8f0; padding-bottom: 4px; }
+        .preview-box h3 { font-size: 16px; margin: 16px 0 6px; color: #1e293b; border-bottom: 1px solid #e2e8f0; padding-bottom: 4px; }
         .preview-box h3 { font-size: 15px; margin: 12px 0 4px; color: #334155; }
         .preview-box p { margin: 4px 0; }
         .preview-box strong { color: #1e293b; }
@@ -743,26 +743,27 @@ function generateTemplate() {
     const html = [];
 
     if (detailLines.length) {
-        html.push('<h2>Course Details</h2>');
-        detailLines.forEach(l => html.push(`<p>${l}</p>`));
+        html.push('<h3>Course Details</h3>');
+        html.push(detailLines.join('<br>'));
     }
 
     licenses.forEach(lic => {
         if (!lic.name.trim()) return;
-        html.push(`<h2>${escHTML(lic.name.trim())}</h2>`);
-        if (lic.courseLevel.trim()) html.push(`<p><strong>Course Level:</strong> ${escHTML(lic.courseLevel.trim())}</p>`);
-        if (lic.prerequisites.trim()) html.push(`<p><strong>Prerequisites:</strong> ${escHTML(lic.prerequisites.trim())}</p>`);
-        if (lic.advancedPrep.trim()) html.push(`<p><strong>Advanced Preparation Requirements:</strong> ${escHTML(lic.advancedPrep.trim())}</p>`);
+        html.push(`<h3>${escHTML(lic.name.trim())}</h3>`);
+        const licLines = [];
+        if (lic.courseLevel.trim()) licLines.push(`<strong>Course Level:</strong> ${escHTML(lic.courseLevel.trim())}`);
+        if (lic.prerequisites.trim()) licLines.push(`<strong>Prerequisites:</strong> ${escHTML(lic.prerequisites.trim())}`);
+        if (lic.advancedPrep.trim()) licLines.push(`<strong>Advanced Preparation Requirements:</strong> ${escHTML(lic.advancedPrep.trim())}`);
+        if (licLines.length) html.push(licLines.join('<br>'));
     });
 
     extraSections.forEach(sec => {
         if (!sec.title.trim()) return;
-        html.push(`<h2>${escHTML(sec.title.trim())}</h2>`);
+        html.push(`<h3>${escHTML(sec.title.trim())}</h3>`);
         const content = sec.content.trim() || '';
         if (content) {
-            content.split('\n').filter(l => l.trim()).forEach(line => {
-                html.push(`<p>${escHTML(line)}</p>`);
-            });
+            const contentLines = content.split('\n').filter(l => l.trim()).map(l => escHTML(l));
+            html.push(contentLines.join('<br>'));
         }
     });
 
