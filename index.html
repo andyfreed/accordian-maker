@@ -884,7 +884,12 @@ function clearTemplate() {
     document.getElementById('tpl-exam').value = '';
     document.getElementById('tpl-delivery').value = '';
     document.getElementById('tpl-formats').value = '';
-    licenses = [];
+    licenses = [
+        { name: 'CFP Board', courseLevel: 'Intermediate', prerequisites: 'None', advancedPrep: 'None' },
+        { name: 'NASBA/CPA', courseLevel: 'Overview', prerequisites: 'None', advancedPrep: 'None' },
+        { name: 'IRS', courseLevel: 'Overview', prerequisites: 'None', advancedPrep: 'None' },
+        { name: 'IAR (NASAA)', courseLevel: 'Basic', prerequisites: 'None', advancedPrep: 'None' }
+    ];
     extraSections = [];
     renderLicenses();
     renderExtraSections();
@@ -894,8 +899,14 @@ function clearTemplate() {
     document.getElementById('template-output').style.display = 'none';
 }
 
-// Init with one license
-addLicense();
+// Init with default licenses
+licenses = [
+    { name: 'CFP Board', courseLevel: 'Intermediate', prerequisites: 'None', advancedPrep: 'None' },
+    { name: 'NASBA/CPA', courseLevel: 'Overview', prerequisites: 'None', advancedPrep: 'None' },
+    { name: 'IRS', courseLevel: 'Overview', prerequisites: 'None', advancedPrep: 'None' },
+    { name: 'IAR (NASAA)', courseLevel: 'Basic', prerequisites: 'None', advancedPrep: 'None' }
+];
+renderLicenses();
 
 // =============================================
 // CONTENT CLEANER
