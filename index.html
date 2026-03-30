@@ -123,7 +123,7 @@
             white-space: pre-wrap;
             word-wrap: break-word;
             min-height: 80px;
-            max-height: 400px;
+            max-height: 500px;
             overflow-y: auto;
             line-height: 1.6;
         }
@@ -135,14 +135,16 @@
             border-radius: 6px;
             padding: 16px;
             min-height: 80px;
-            max-height: 400px;
+            max-height: 500px;
             overflow-y: auto;
             line-height: 1.7;
             font-size: 15px;
         }
-        .preview-box h1, .preview-box h2, .preview-box h3, .preview-box h4 { margin: 12px 0 6px; }
+        .preview-box h2 { font-size: 18px; margin: 16px 0 8px; color: #1e293b; border-bottom: 1px solid #e2e8f0; padding-bottom: 4px; }
+        .preview-box h3 { font-size: 15px; margin: 12px 0 4px; color: #334155; }
+        .preview-box p { margin: 4px 0; }
+        .preview-box strong { color: #1e293b; }
         .preview-box ul, .preview-box ol { margin: 8px 0 8px 24px; }
-        .preview-box p { margin: 6px 0; }
 
         /* --- Cleanup options --- */
         .options-grid {
@@ -162,25 +164,6 @@
             height: 16px;
             accent-color: #3b82f6;
         }
-
-        /* --- Accordion builder --- */
-        .acc-item {
-            background: #fff;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            padding: 16px;
-            margin-bottom: 12px;
-        }
-        .acc-item-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        .acc-item-number { font-weight: 700; color: #3b82f6; font-size: 14px; }
-        .acc-item label { display: block; font-weight: 600; margin-bottom: 4px; font-size: 13px; color: #475569; }
-        .acc-item input[type="text"] { margin-bottom: 10px; }
-        .acc-item textarea { min-height: 70px; }
 
         /* --- Tabs (output) --- */
         .output-tabs { display: flex; gap: 0; margin-bottom: 0; }
@@ -209,6 +192,97 @@
             border-radius: 0;
         }
 
+        /* --- Helpful hint --- */
+        .hint {
+            background: #fffbeb;
+            border: 1px solid #fde68a;
+            border-radius: 6px;
+            padding: 10px 14px;
+            font-size: 13px;
+            color: #92400e;
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        /* --- Course Template form --- */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .form-group { margin-bottom: 16px; }
+        .form-group:last-child { margin-bottom: 0; }
+        .form-group.full-width { grid-column: 1 / -1; }
+        .form-group input[type="text"],
+        .form-group textarea {
+            margin-top: 0;
+        }
+        .form-group textarea { min-height: 100px; }
+
+        /* --- License cards --- */
+        .license-card {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 14px;
+            position: relative;
+        }
+        .license-card .license-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+        }
+        .license-card .license-header h3 {
+            font-size: 15px;
+            color: #3b82f6;
+            margin: 0;
+        }
+        .license-card .sub-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 14px;
+        }
+        .license-card .sub-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 12px;
+            margin-bottom: 5px;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+        }
+        .license-card .sub-group textarea {
+            min-height: 60px;
+            font-size: 13px;
+        }
+        .license-name-input {
+            font-size: 16px !important;
+            font-weight: 600;
+            border: 1px solid #cbd5e1 !important;
+            background: #fff;
+        }
+
+        /* --- Accordion builder --- */
+        .acc-item {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+        .acc-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .acc-item-number { font-weight: 700; color: #3b82f6; font-size: 14px; }
+        .acc-item label { display: block; font-weight: 600; margin-bottom: 4px; font-size: 13px; color: #475569; }
+        .acc-item input[type="text"] { margin-bottom: 10px; }
+        .acc-item textarea { min-height: 70px; }
+
         /* --- Format type selector --- */
         .format-selector {
             display: flex;
@@ -228,31 +302,20 @@
         .format-option:hover { border-color: #93c5fd; }
         .format-option.active { border-color: #3b82f6; background: #eff6ff; color: #1d4ed8; }
 
-        /* --- Helpful hint --- */
-        .hint {
-            background: #fffbeb;
-            border: 1px solid #fde68a;
-            border-radius: 6px;
-            padding: 10px 14px;
-            font-size: 13px;
-            color: #92400e;
-            margin-bottom: 16px;
-            line-height: 1.5;
+        /* Divider */
+        .section-divider {
+            border: none;
+            border-top: 2px solid #e2e8f0;
+            margin: 24px 0;
         }
-
-        /* --- Table cleanup --- */
-        .table-preview { overflow-x: auto; }
-        .table-preview table {
-            border-collapse: collapse;
-            width: 100%;
+        .section-title {
             font-size: 14px;
+            font-weight: 700;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            margin-bottom: 14px;
         }
-        .table-preview th, .table-preview td {
-            border: 1px solid #e2e8f0;
-            padding: 8px 12px;
-            text-align: left;
-        }
-        .table-preview th { background: #f1f5f9; font-weight: 600; }
     </style>
 </head>
 <body>
@@ -260,21 +323,114 @@
 <!-- Navigation -->
 <div class="nav">
     <div class="nav-brand">Course Content Formatter</div>
-    <button class="active" onclick="switchPanel('formatter')">Content Cleaner</button>
-    <button onclick="switchPanel('list')">List Builder</button>
-    <button onclick="switchPanel('table')">Table Builder</button>
+    <button class="active" onclick="switchPanel('template')">Course Template</button>
+    <button onclick="switchPanel('formatter')">Content Cleaner</button>
     <button onclick="switchPanel('accordion')">Accordion Maker</button>
 </div>
 
 <!-- ============================================ -->
-<!-- PANEL 1: Content Cleaner                     -->
+<!-- PANEL: Course Template                       -->
 <!-- ============================================ -->
-<div class="panel active" id="panel-formatter">
-    <h1>Content Cleaner</h1>
-    <p class="subtitle">Paste content from PDFs or Word docs and get clean output ready for WordPress.</p>
+<div class="panel active" id="panel-template">
+    <h1>Course Template</h1>
+    <p class="subtitle">Fill in the course details below, then generate formatted output for WordPress.</p>
 
     <div class="hint">
-        <strong>Tip:</strong> Paste your content from a PDF or Word document into the box below. The cleaner will fix common formatting issues like extra line breaks, smart quotes, weird spacing, and broken paragraphs.
+        <strong>Tip:</strong> Fill in the fields below. Add one or more licenses, each with its own Course Level, Prerequisites, and Advanced Preparation. Use the Content Cleaner tab first if you need to clean up text pasted from PDFs.
+    </div>
+
+    <!-- Course Details -->
+    <div class="card">
+        <h2>Course Details</h2>
+        <div class="form-grid">
+            <div class="form-group">
+                <label class="field-label">Author</label>
+                <input type="text" id="tpl-author" placeholder="e.g. John Smith, CPA">
+            </div>
+            <div class="form-group">
+                <label class="field-label">Publication / Revision Date</label>
+                <input type="text" id="tpl-pub-date" placeholder="e.g. March 2026">
+            </div>
+            <div class="form-group">
+                <label class="field-label">Course Exam Questions</label>
+                <input type="text" id="tpl-exam" placeholder="e.g. 10 (online, multiple choice)">
+            </div>
+            <div class="form-group">
+                <label class="field-label">Program Delivery Method</label>
+                <input type="text" id="tpl-delivery" placeholder="e.g. QAS Self-Study">
+            </div>
+            <div class="form-group full-width">
+                <label class="field-label">Available Formats of Course Text</label>
+                <input type="text" id="tpl-formats" placeholder="e.g. PDF, ePub, Online">
+            </div>
+        </div>
+    </div>
+
+    <!-- Licenses -->
+    <div class="card">
+        <h2>Licenses</h2>
+        <p style="font-size:13px; color:#64748b; margin-bottom:14px;">Add each license type this course applies to. Each gets its own Course Level, Prerequisites, and Advanced Preparation.</p>
+
+        <div id="licenses-area"></div>
+
+        <button class="btn btn-primary" onclick="addLicense()">+ Add License</button>
+    </div>
+
+    <!-- Additional Content Fields -->
+    <div class="card">
+        <h2>Additional Content (Optional)</h2>
+        <p style="font-size:13px; color:#64748b; margin-bottom:14px;">Paste any extra content you want included, such as a course description, table of contents, or learning objectives. Each field becomes its own section in the output.</p>
+
+        <div id="extra-sections-area"></div>
+
+        <button class="btn btn-primary" onclick="addExtraSection()">+ Add Content Section</button>
+    </div>
+
+    <!-- Generate -->
+    <div class="card">
+        <div class="btn-row" style="margin-top:0;">
+            <button class="btn btn-primary" onclick="generateTemplate()" style="font-size:16px; padding: 12px 32px;">Generate Output</button>
+            <button class="btn btn-outline" onclick="clearTemplate()">Clear All</button>
+        </div>
+    </div>
+
+    <!-- Output -->
+    <div id="template-output" style="display:none;">
+        <div class="card">
+            <h2>Generated Output</h2>
+            <div class="output-tabs">
+                <div class="output-tab active" onclick="switchOutputTab('tpl', 'preview')">Preview</div>
+                <div class="output-tab" onclick="switchOutputTab('tpl', 'shortcode')">Shortcode</div>
+                <div class="output-tab" onclick="switchOutputTab('tpl', 'html')">HTML</div>
+            </div>
+            <div class="output-wrapper">
+                <div class="output-pane active" id="tpl-preview">
+                    <div class="preview-box" id="tpl-preview-box"></div>
+                </div>
+                <div class="output-pane" id="tpl-shortcode">
+                    <div class="output-box" id="tpl-shortcode-box"></div>
+                </div>
+                <div class="output-pane" id="tpl-html">
+                    <div class="output-box" id="tpl-html-box"></div>
+                </div>
+            </div>
+            <div class="btn-row">
+                <button class="btn btn-success" onclick="copyTemplateOutput('shortcode')">Copy Shortcode</button>
+                <button class="btn btn-success" onclick="copyTemplateOutput('html')">Copy HTML</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- PANEL: Content Cleaner                       -->
+<!-- ============================================ -->
+<div class="panel" id="panel-formatter">
+    <h1>Content Cleaner</h1>
+    <p class="subtitle">Paste content from PDFs or Word docs and get clean text ready to use in the template or WordPress.</p>
+
+    <div class="hint">
+        <strong>Tip:</strong> Paste your content from a PDF or Word document into the box below. The cleaner will fix common formatting issues like extra line breaks, smart quotes, weird spacing, and broken paragraphs. Then copy the cleaned text back into the Course Template fields.
     </div>
 
     <div class="card">
@@ -342,116 +498,14 @@
 </div>
 
 <!-- ============================================ -->
-<!-- PANEL 2: List Builder                        -->
-<!-- ============================================ -->
-<div class="panel" id="panel-list">
-    <h1>List Builder</h1>
-    <p class="subtitle">Paste items (one per line) to create a clean bulleted or numbered list for WordPress.</p>
-
-    <div class="hint">
-        <strong>Tip:</strong> Paste a table of contents, learning objectives, or any list. Each line becomes a list item. Blank lines are ignored. Leading numbers, bullets, or dashes are automatically stripped.
-    </div>
-
-    <div class="card">
-        <label class="field-label">Paste List Items (one per line)</label>
-        <textarea id="list-input" placeholder="Chapter 1: Introduction&#10;Chapter 2: Getting Started&#10;Chapter 3: Advanced Topics"></textarea>
-
-        <div style="margin: 14px 0;">
-            <label class="field-label">List Type</label>
-            <div class="format-selector">
-                <div class="format-option active" onclick="setListType('ul')">Bulleted List</div>
-                <div class="format-option" onclick="setListType('ol')">Numbered List</div>
-            </div>
-        </div>
-
-        <div class="btn-row">
-            <button class="btn btn-primary" onclick="buildList()">Build List</button>
-            <button class="btn btn-outline" onclick="clearList()">Clear</button>
-        </div>
-    </div>
-
-    <div id="list-output" style="display:none;">
-        <div class="card">
-            <h2>Generated List</h2>
-            <div class="output-tabs">
-                <div class="output-tab active" onclick="switchOutputTab('list', 'preview')">Preview</div>
-                <div class="output-tab" onclick="switchOutputTab('list', 'html')">HTML</div>
-            </div>
-            <div class="output-wrapper">
-                <div class="output-pane active" id="list-preview">
-                    <div class="preview-box" id="list-preview-box"></div>
-                </div>
-                <div class="output-pane" id="list-html">
-                    <div class="output-box" id="list-html-box"></div>
-                </div>
-            </div>
-            <div class="btn-row">
-                <button class="btn btn-success" onclick="copyListOutput('html')">Copy HTML</button>
-                <button class="btn btn-success" onclick="copyListOutput('rich')">Copy for WordPress (Rich Text)</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- ============================================ -->
-<!-- PANEL 3: Table Builder                       -->
-<!-- ============================================ -->
-<div class="panel" id="panel-table">
-    <h1>Table Builder</h1>
-    <p class="subtitle">Paste tab-separated or CSV data to create a clean HTML table for WordPress.</p>
-
-    <div class="hint">
-        <strong>Tip:</strong> Paste data from Excel, Google Sheets, or a CSV file. The first row will be used as the table header. Tab-separated and comma-separated formats are both supported.
-    </div>
-
-    <div class="card">
-        <label class="field-label">Paste Table Data</label>
-        <textarea id="table-input" placeholder="Name&#9;Description&#9;Duration&#10;Course 1&#9;Intro to topic&#9;2 hours&#10;Course 2&#9;Advanced topic&#9;4 hours"></textarea>
-
-        <div style="margin: 14px 0;">
-            <label class="option-item">
-                <input type="checkbox" id="table-has-header" checked>
-                First row is a header
-            </label>
-        </div>
-
-        <div class="btn-row">
-            <button class="btn btn-primary" onclick="buildTable()">Build Table</button>
-            <button class="btn btn-outline" onclick="clearTable()">Clear</button>
-        </div>
-    </div>
-
-    <div id="table-output" style="display:none;">
-        <div class="card">
-            <h2>Generated Table</h2>
-            <div class="output-tabs">
-                <div class="output-tab active" onclick="switchOutputTab('tbl', 'preview')">Preview</div>
-                <div class="output-tab" onclick="switchOutputTab('tbl', 'html')">HTML</div>
-            </div>
-            <div class="output-wrapper">
-                <div class="output-pane active" id="tbl-preview">
-                    <div class="preview-box table-preview" id="tbl-preview-box"></div>
-                </div>
-                <div class="output-pane" id="tbl-html">
-                    <div class="output-box" id="tbl-html-box"></div>
-                </div>
-            </div>
-            <div class="btn-row">
-                <button class="btn btn-success" onclick="copyTableOutput()">Copy HTML</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- ============================================ -->
-<!-- PANEL 4: Accordion Maker                     -->
+<!-- PANEL: Accordion Maker                       -->
 <!-- ============================================ -->
 <div class="panel" id="panel-accordion">
     <h1>Accordion Maker</h1>
-    <p class="subtitle">Build accordion shortcodes for expandable course content sections.</p>
+    <p class="subtitle">Build accordion shortcodes manually for custom sections.</p>
 
     <div class="hint">
-        <strong>Tip:</strong> Add sections for things like Course Description, Learning Objectives, Table of Contents, etc. You can paste cleaned content from the Content Cleaner tab into each section.
+        <strong>Tip:</strong> The Course Template tab already generates accordion shortcode automatically. Use this tab only if you need to build a custom accordion outside of the template.
     </div>
 
     <div id="acc-items-area"></div>
@@ -473,30 +527,33 @@
 // =============================================
 // Navigation
 // =============================================
+const panelLabels = {
+    template: 'Course Template',
+    formatter: 'Content Cleaner',
+    accordion: 'Accordion Maker'
+};
+
 function switchPanel(name) {
     document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('.nav button').forEach(b => b.classList.remove('active'));
     document.getElementById('panel-' + name).classList.add('active');
-    // find the button by matching text
-    const labels = { formatter: 'Content Cleaner', list: 'List Builder', table: 'Table Builder', accordion: 'Accordion Maker' };
     document.querySelectorAll('.nav button').forEach(b => {
-        if (b.textContent === labels[name]) b.classList.add('active');
+        if (b.textContent === panelLabels[name]) b.classList.add('active');
     });
 }
 
 function switchOutputTab(prefix, tab) {
-    const tabs = { preview: 'preview', html: 'html', plain: 'plain' };
-    document.querySelectorAll(`#${prefix}-preview, #${prefix}-html, #${prefix}-plain`).forEach(el => {
-        if (el) el.classList.remove('active');
+    document.querySelectorAll(`[id^="${prefix}-"]`).forEach(el => {
+        if (el.classList.contains('output-pane')) el.classList.remove('active');
     });
     const target = document.getElementById(`${prefix}-${tab}`);
     if (target) target.classList.add('active');
 
-    // update tab buttons within the same card
     const card = target.closest('.card');
     card.querySelectorAll('.output-tab').forEach(t => t.classList.remove('active'));
     card.querySelectorAll('.output-tab').forEach(t => {
-        if (t.textContent.toLowerCase().includes(tab === 'plain' ? 'plain' : tab)) t.classList.add('active');
+        const label = t.textContent.toLowerCase();
+        if (label.includes(tab) || (tab === 'plain' && label.includes('plain'))) t.classList.add('active');
     });
 }
 
@@ -512,21 +569,237 @@ function copyText(text, btn) {
     });
 }
 
-function copyRichText(html, btn) {
-    const blob = new Blob([html], { type: 'text/html' });
-    const plainBlob = new Blob([html], { type: 'text/plain' });
-    navigator.clipboard.write([
-        new ClipboardItem({
-            'text/html': blob,
-            'text/plain': plainBlob
-        })
-    ]).then(() => {
-        const orig = btn.textContent;
-        btn.textContent = 'Copied!';
-        btn.classList.add('copied');
-        setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 2000);
+function escHTML(str) {
+    return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+function escAttr(str) {
+    return str.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+// =============================================
+// COURSE TEMPLATE
+// =============================================
+let licenses = [];
+let extraSections = [];
+
+function addLicense() {
+    licenses.push({
+        name: '',
+        courseLevel: '',
+        prerequisites: '',
+        advancedPrep: ''
+    });
+    renderLicenses();
+    const inputs = document.querySelectorAll('.license-card .license-name-input');
+    if (inputs.length) inputs[inputs.length - 1].focus();
+}
+
+function removeLicense(i) {
+    licenses.splice(i, 1);
+    renderLicenses();
+}
+
+function updateLicense(i, field, value) {
+    licenses[i][field] = value;
+}
+
+function renderLicenses() {
+    const area = document.getElementById('licenses-area');
+    area.innerHTML = '';
+    licenses.forEach((lic, i) => {
+        const div = document.createElement('div');
+        div.className = 'license-card';
+        div.innerHTML = `
+            <div class="license-header">
+                <h3>License ${i + 1}</h3>
+                <button class="btn-danger" onclick="removeLicense(${i})" title="Remove">&times;</button>
+            </div>
+            <div class="form-group" style="margin-bottom:14px;">
+                <label class="field-label">License Name</label>
+                <input type="text" class="license-name-input" placeholder="e.g. CPA, CFP, EA, CTEC, CRTP..." value="${escAttr(lic.name)}" oninput="updateLicense(${i},'name',this.value)">
+            </div>
+            <div class="sub-grid">
+                <div class="sub-group">
+                    <label>Course Level</label>
+                    <input type="text" placeholder="e.g. Basic, Intermediate, Advanced, Update" value="${escAttr(lic.courseLevel)}" oninput="updateLicense(${i},'courseLevel',this.value)">
+                </div>
+                <div class="sub-group">
+                    <label>Prerequisites</label>
+                    <textarea placeholder="e.g. None, or list requirements..." oninput="updateLicense(${i},'prerequisites',this.value)">${escHTML(lic.prerequisites)}</textarea>
+                </div>
+                <div class="sub-group">
+                    <label>Advanced Preparation Requirements</label>
+                    <textarea placeholder="e.g. None, or list requirements..." oninput="updateLicense(${i},'advancedPrep',this.value)">${escHTML(lic.advancedPrep)}</textarea>
+                </div>
+            </div>
+        `;
+        area.appendChild(div);
     });
 }
+
+function addExtraSection() {
+    extraSections.push({ title: '', content: '' });
+    renderExtraSections();
+    const inputs = document.querySelectorAll('#extra-sections-area input[type="text"]');
+    if (inputs.length) inputs[inputs.length - 1].focus();
+}
+
+function removeExtraSection(i) {
+    extraSections.splice(i, 1);
+    renderExtraSections();
+}
+
+function updateExtraSection(i, field, value) {
+    extraSections[i][field] = value;
+}
+
+function renderExtraSections() {
+    const area = document.getElementById('extra-sections-area');
+    area.innerHTML = '';
+    extraSections.forEach((sec, i) => {
+        const div = document.createElement('div');
+        div.style.cssText = 'background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:16px; margin-bottom:12px;';
+        div.innerHTML = `
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                <span style="font-weight:700; color:#3b82f6; font-size:14px;">Section ${i + 1}</span>
+                <button class="btn-danger" onclick="removeExtraSection(${i})">&times;</button>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+                <label class="field-label">Section Title</label>
+                <input type="text" placeholder="e.g. Course Description, Table of Contents, Learning Objectives..." value="${escAttr(sec.title)}" oninput="updateExtraSection(${i},'title',this.value)">
+            </div>
+            <div class="form-group">
+                <label class="field-label">Content</label>
+                <textarea placeholder="Paste or type the section content..." oninput="updateExtraSection(${i},'content',this.value)">${escHTML(sec.content)}</textarea>
+            </div>
+        `;
+        area.appendChild(div);
+    });
+}
+
+let generatedShortcode = '';
+let generatedHTML = '';
+
+function generateTemplate() {
+    const author = document.getElementById('tpl-author').value.trim();
+    const pubDate = document.getElementById('tpl-pub-date').value.trim();
+    const exam = document.getElementById('tpl-exam').value.trim();
+    const delivery = document.getElementById('tpl-delivery').value.trim();
+    const formats = document.getElementById('tpl-formats').value.trim();
+
+    // Build shortcode output
+    const sc = [];
+    sc.push('[bhfe_accordion]');
+    sc.push('');
+
+    // Course Details accordion item
+    const detailLines = [];
+    if (author) detailLines.push(`<strong>Author:</strong> ${author}`);
+    if (pubDate) detailLines.push(`<strong>Publication/Revision Date:</strong> ${pubDate}`);
+    if (exam) detailLines.push(`<strong>Course Exam Questions:</strong> ${exam}`);
+    if (delivery) detailLines.push(`<strong>Program Delivery Method:</strong> ${delivery}`);
+    if (formats) detailLines.push(`<strong>Available Formats of Course Text:</strong> ${formats}`);
+
+    if (detailLines.length) {
+        sc.push('[bhfe_accordion_item title="Course Details"]');
+        sc.push('');
+        sc.push(detailLines.join('\n'));
+        sc.push('');
+        sc.push('[/bhfe_accordion_item]');
+        sc.push('');
+    }
+
+    // License accordion items
+    licenses.forEach(lic => {
+        if (!lic.name.trim()) return;
+        sc.push(`[bhfe_accordion_item title="${lic.name.trim()}"]`);
+        sc.push('');
+        const licLines = [];
+        if (lic.courseLevel.trim()) licLines.push(`<strong>Course Level:</strong> ${lic.courseLevel.trim()}`);
+        if (lic.prerequisites.trim()) licLines.push(`<strong>Prerequisites:</strong> ${lic.prerequisites.trim()}`);
+        if (lic.advancedPrep.trim()) licLines.push(`<strong>Advanced Preparation Requirements:</strong> ${lic.advancedPrep.trim()}`);
+        sc.push(licLines.join('\n'));
+        sc.push('');
+        sc.push('[/bhfe_accordion_item]');
+        sc.push('');
+    });
+
+    // Extra content sections
+    extraSections.forEach(sec => {
+        if (!sec.title.trim()) return;
+        sc.push(`[bhfe_accordion_item title="${sec.title.trim()}"]`);
+        sc.push('');
+        sc.push(sec.content.trim() || 'Content goes here');
+        sc.push('');
+        sc.push('[/bhfe_accordion_item]');
+        sc.push('');
+    });
+
+    sc.push('[/bhfe_accordion]');
+    generatedShortcode = sc.join('\n');
+
+    // Build HTML output
+    const html = [];
+
+    if (detailLines.length) {
+        html.push('<h2>Course Details</h2>');
+        detailLines.forEach(l => html.push(`<p>${l}</p>`));
+    }
+
+    licenses.forEach(lic => {
+        if (!lic.name.trim()) return;
+        html.push(`<h2>${escHTML(lic.name.trim())}</h2>`);
+        if (lic.courseLevel.trim()) html.push(`<p><strong>Course Level:</strong> ${escHTML(lic.courseLevel.trim())}</p>`);
+        if (lic.prerequisites.trim()) html.push(`<p><strong>Prerequisites:</strong> ${escHTML(lic.prerequisites.trim())}</p>`);
+        if (lic.advancedPrep.trim()) html.push(`<p><strong>Advanced Preparation Requirements:</strong> ${escHTML(lic.advancedPrep.trim())}</p>`);
+    });
+
+    extraSections.forEach(sec => {
+        if (!sec.title.trim()) return;
+        html.push(`<h2>${escHTML(sec.title.trim())}</h2>`);
+        const content = sec.content.trim() || '';
+        if (content) {
+            content.split('\n').filter(l => l.trim()).forEach(line => {
+                html.push(`<p>${escHTML(line)}</p>`);
+            });
+        }
+    });
+
+    generatedHTML = html.join('\n');
+
+    // Render outputs
+    document.getElementById('tpl-preview-box').innerHTML = generatedHTML;
+    document.getElementById('tpl-shortcode-box').textContent = generatedShortcode;
+    document.getElementById('tpl-html-box').textContent = generatedHTML;
+    document.getElementById('template-output').style.display = 'block';
+    document.getElementById('template-output').scrollIntoView({ behavior: 'smooth' });
+}
+
+function copyTemplateOutput(type) {
+    const btn = event.target;
+    if (type === 'shortcode') {
+        copyText(generatedShortcode, btn);
+    } else {
+        copyText(generatedHTML, btn);
+    }
+}
+
+function clearTemplate() {
+    document.getElementById('tpl-author').value = '';
+    document.getElementById('tpl-pub-date').value = '';
+    document.getElementById('tpl-exam').value = '';
+    document.getElementById('tpl-delivery').value = '';
+    document.getElementById('tpl-formats').value = '';
+    licenses = [];
+    extraSections = [];
+    renderLicenses();
+    renderExtraSections();
+    document.getElementById('template-output').style.display = 'none';
+}
+
+// Init with one license
+addLicense();
 
 // =============================================
 // CONTENT CLEANER
@@ -547,40 +820,29 @@ function cleanContent() {
 
     let text = raw;
 
-    // Fix smart quotes and special chars
     if (fixQuotes) {
         text = text.replace(/[\u2018\u2019\u201A]/g, "'");
         text = text.replace(/[\u201C\u201D\u201E]/g, '"');
         text = text.replace(/\u2026/g, '...');
         text = text.replace(/[\u2013\u2014]/g, '-');
-        text = text.replace(/\u00A0/g, ' '); // non-breaking space
-        text = text.replace(/\u200B/g, '');   // zero-width space
-        text = text.replace(/\uFEFF/g, '');   // BOM
+        text = text.replace(/\u00A0/g, ' ');
+        text = text.replace(/\u200B/g, '');
+        text = text.replace(/\uFEFF/g, '');
     }
 
-    // Remove extra spaces
     if (extraSpaces) {
         text = text.replace(/[ \t]+/g, ' ');
         text = text.split('\n').map(l => l.trim()).join('\n');
     }
 
-    // Split into lines for processing
     let lines = text.split('\n');
 
-    // Merge broken lines (PDF line wrapping)
     if (mergeLines) {
         const merged = [];
         for (let i = 0; i < lines.length; i++) {
             const line = lines[i];
-            if (line.trim() === '') {
-                merged.push('');
-                continue;
-            }
-            // If previous line exists, is not blank, doesn't end with sentence-ending punctuation,
-            // and current line starts with lowercase, merge them
-            if (merged.length > 0 && merged[merged.length - 1] !== '' &&
-                !merged[merged.length - 1].match(/[.!?:;]$/) === false) {
-                // More nuanced: merge if line doesn't look like a new paragraph/heading/list item
+            if (line.trim() === '') { merged.push(''); continue; }
+            if (merged.length > 0 && merged[merged.length - 1] !== '') {
                 const looksLikeNewBlock = /^(\d+[\.\)]\s|[-*\u2022]\s|[A-Z]{3,}|Chapter|Section|Module|Unit|Part|Lesson)/i.test(line.trim());
                 if (!looksLikeNewBlock && /[a-z,]$/.test(merged[merged.length - 1].trim())) {
                     merged[merged.length - 1] = merged[merged.length - 1].trim() + ' ' + line.trim();
@@ -592,7 +854,6 @@ function cleanContent() {
         lines = merged;
     }
 
-    // Trim excessive blank lines
     if (trimBlank) {
         const trimmed = [];
         let prevBlank = false;
@@ -600,35 +861,25 @@ function cleanContent() {
             if (line.trim() === '') {
                 if (!prevBlank) trimmed.push('');
                 prevBlank = true;
-            } else {
-                trimmed.push(line);
-                prevBlank = false;
-            }
+            } else { trimmed.push(line); prevBlank = false; }
         }
         lines = trimmed;
     }
 
-    // Remove leading/trailing blank lines
     while (lines.length && lines[0].trim() === '') lines.shift();
     while (lines.length && lines[lines.length - 1].trim() === '') lines.pop();
 
-    // Build HTML output
     const htmlParts = [];
     let inList = false;
     let listType = '';
 
     for (let i = 0; i < lines.length; i++) {
         const line = lines[i].trim();
-
         if (line === '') {
-            if (inList) {
-                htmlParts.push(`</${listType}>`);
-                inList = false;
-            }
+            if (inList) { htmlParts.push(`</${listType}>`); inList = false; }
             continue;
         }
 
-        // Detect headings (ALL CAPS lines, short)
         if (detectHeadings && /^[A-Z][A-Z\s\d:&\-]{2,60}$/.test(line) && line.length < 80 && !line.match(/[.!?,;]/)) {
             if (inList) { htmlParts.push(`</${listType}>`); inList = false; }
             const heading = line.charAt(0) + line.slice(1).toLowerCase();
@@ -636,17 +887,13 @@ function cleanContent() {
             continue;
         }
 
-        // Detect list items
         if (detectLists) {
             const bulletMatch = line.match(/^[-*\u2022\u25CF\u25CB\u2023\u27A2]\s+(.+)/);
             const numberMatch = line.match(/^(\d+)[.\)]\s+(.+)/);
-
             if (bulletMatch) {
                 if (!inList || listType !== 'ul') {
                     if (inList) htmlParts.push(`</${listType}>`);
-                    htmlParts.push('<ul>');
-                    inList = true;
-                    listType = 'ul';
+                    htmlParts.push('<ul>'); inList = true; listType = 'ul';
                 }
                 htmlParts.push(`  <li>${escHTML(bulletMatch[1])}</li>`);
                 continue;
@@ -654,23 +901,20 @@ function cleanContent() {
             if (numberMatch) {
                 if (!inList || listType !== 'ol') {
                     if (inList) htmlParts.push(`</${listType}>`);
-                    htmlParts.push('<ol>');
-                    inList = true;
-                    listType = 'ol';
+                    htmlParts.push('<ol>'); inList = true; listType = 'ol';
                 }
                 htmlParts.push(`  <li>${escHTML(numberMatch[2])}</li>`);
                 continue;
             }
         }
 
-        // Regular paragraph
         if (inList) { htmlParts.push(`</${listType}>`); inList = false; }
         htmlParts.push(`<p>${escHTML(line)}</p>`);
     }
     if (inList) htmlParts.push(`</${listType}>`);
 
     cleanedHTML = htmlParts.join('\n');
-    cleanedPlain = lines.filter(l => l.trim() !== '' || lines.indexOf(l) === lines.length).join('\n');
+    cleanedPlain = lines.filter(l => l.trim() !== '').join('\n');
 
     document.getElementById('fmt-preview-box').innerHTML = cleanedHTML;
     document.getElementById('fmt-html-box').textContent = cleanedHTML;
@@ -678,135 +922,14 @@ function cleanContent() {
     document.getElementById('formatter-output').style.display = 'block';
 }
 
-function escHTML(str) {
-    return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-}
-
 function copyFormatted(type) {
     const btn = event.target;
-    if (type === 'html') {
-        copyText(cleanedHTML, btn);
-    } else {
-        copyText(cleanedPlain, btn);
-    }
+    copyText(type === 'html' ? cleanedHTML : cleanedPlain, btn);
 }
 
 function clearFormatter() {
     document.getElementById('raw-input').value = '';
     document.getElementById('formatter-output').style.display = 'none';
-}
-
-// =============================================
-// LIST BUILDER
-// =============================================
-let listTypeChoice = 'ul';
-let generatedListHTML = '';
-
-function setListType(type) {
-    listTypeChoice = type;
-    document.querySelectorAll('#panel-list .format-option').forEach(el => el.classList.remove('active'));
-    event.target.classList.add('active');
-}
-
-function buildList() {
-    const raw = document.getElementById('list-input').value;
-    if (!raw.trim()) return;
-
-    const items = raw.split('\n')
-        .map(l => l.trim())
-        .filter(l => l !== '')
-        .map(l => {
-            // Strip leading numbers, bullets, dashes
-            return l.replace(/^(\d+[\.\)]\s*|[-*\u2022\u25CF]\s*)/, '').trim();
-        });
-
-    if (!items.length) return;
-
-    const tag = listTypeChoice;
-    const lis = items.map(item => `  <li>${escHTML(item)}</li>`).join('\n');
-    generatedListHTML = `<${tag}>\n${lis}\n</${tag}>`;
-
-    document.getElementById('list-preview-box').innerHTML = generatedListHTML;
-    document.getElementById('list-html-box').textContent = generatedListHTML;
-    document.getElementById('list-output').style.display = 'block';
-}
-
-function copyListOutput(type) {
-    const btn = event.target;
-    if (type === 'rich') {
-        copyRichText(generatedListHTML, btn);
-    } else {
-        copyText(generatedListHTML, btn);
-    }
-}
-
-function clearList() {
-    document.getElementById('list-input').value = '';
-    document.getElementById('list-output').style.display = 'none';
-}
-
-// =============================================
-// TABLE BUILDER
-// =============================================
-let generatedTableHTML = '';
-
-function buildTable() {
-    const raw = document.getElementById('table-input').value;
-    if (!raw.trim()) return;
-
-    const hasHeader = document.getElementById('table-has-header').checked;
-    const lines = raw.split('\n').filter(l => l.trim() !== '');
-
-    // Detect delimiter: tab or comma
-    const firstLine = lines[0];
-    const useTab = firstLine.includes('\t');
-    const delimiter = useTab ? '\t' : ',';
-
-    function splitRow(line) {
-        if (useTab) return line.split('\t').map(c => c.trim());
-        // Simple CSV split (handles quoted commas)
-        const cells = [];
-        let current = '';
-        let inQuotes = false;
-        for (let i = 0; i < line.length; i++) {
-            if (line[i] === '"') { inQuotes = !inQuotes; continue; }
-            if (line[i] === ',' && !inQuotes) { cells.push(current.trim()); current = ''; continue; }
-            current += line[i];
-        }
-        cells.push(current.trim());
-        return cells;
-    }
-
-    const rows = lines.map(splitRow);
-    let html = '<table>\n';
-
-    rows.forEach((row, i) => {
-        if (i === 0 && hasHeader) {
-            html += '  <thead>\n    <tr>\n';
-            row.forEach(c => { html += `      <th>${escHTML(c)}</th>\n`; });
-            html += '    </tr>\n  </thead>\n  <tbody>\n';
-        } else {
-            if (i === 0) html += '  <tbody>\n';
-            html += '    <tr>\n';
-            row.forEach(c => { html += `      <td>${escHTML(c)}</td>\n`; });
-            html += '    </tr>\n';
-        }
-    });
-    html += '  </tbody>\n</table>';
-
-    generatedTableHTML = html;
-    document.getElementById('tbl-preview-box').innerHTML = html;
-    document.getElementById('tbl-html-box').textContent = html;
-    document.getElementById('table-output').style.display = 'block';
-}
-
-function copyTableOutput() {
-    copyText(generatedTableHTML, event.target);
-}
-
-function clearTable() {
-    document.getElementById('table-input').value = '';
-    document.getElementById('table-output').style.display = 'none';
 }
 
 // =============================================
@@ -838,10 +961,6 @@ function accRender() {
     accUpdateOutput();
 }
 
-function escAttr(str) {
-    return str.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-}
-
 function accAddItem() {
     accItems.push({ title: '', content: '' });
     accRender();
@@ -849,24 +968,15 @@ function accAddItem() {
     if (inputs.length) inputs[inputs.length - 1].focus();
 }
 
-function accRemove(i) {
-    accItems.splice(i, 1);
-    accRender();
-}
-
-function accUpdate(i, field, value) {
-    accItems[i][field] = value;
-    accUpdateOutput();
-}
+function accRemove(i) { accItems.splice(i, 1); accRender(); }
+function accUpdate(i, field, value) { accItems[i][field] = value; accUpdateOutput(); }
 
 function accUpdateOutput() {
     let lines = ['[bhfe_accordion]', ''];
     accItems.forEach(item => {
-        const title = item.title || 'Section Title';
-        const content = item.content || 'Content goes here';
-        lines.push(`[bhfe_accordion_item title="${title}"]`);
+        lines.push(`[bhfe_accordion_item title="${item.title || 'Section Title'}"]`);
         lines.push('');
-        lines.push(content);
+        lines.push(item.content || 'Content goes here');
         lines.push('');
         lines.push('[/bhfe_accordion_item]');
         lines.push('');
@@ -876,11 +986,9 @@ function accUpdateOutput() {
 }
 
 function accCopy() {
-    const text = document.getElementById('acc-output').textContent;
-    copyText(text, document.getElementById('acc-copy-btn'));
+    copyText(document.getElementById('acc-output').textContent, document.getElementById('acc-copy-btn'));
 }
 
-// Init accordion
 accRender();
 </script>
 
